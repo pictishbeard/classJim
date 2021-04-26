@@ -15,10 +15,24 @@ gymclass_repository.delete_all()
 member1 = Member('Eddie Hall', 'Elite')
 member_repository.save(member1)
 
+member2 = Member('Not Jim', 'Intermediate')
+
+member3 = Member('Jo Smith', 'Beginner')
+
 gymclass1 = gymClass('Strongman Prep', 60, 'Advanced', 10)
 gymclass_repository.save(gymclass1)
 
+gymclass2 = gymClass('Zumba Intro', 30, 'Beginner', 20)
+
+gymclass3 = gymClass('HIIT Intermediate', 15, 'Intermediate', 25)
+
 schedule1 = Schedule(member1, gymclass1)
 schedule_repository.save(schedule1)
+
+schedule2 = Schedule(member2, gymclass3)
+
+schedule3 = Schedule(member3, gymclass2)
+
+schedule4 = Schedule(member, gymclass)
 
 pdb.set_trace()
