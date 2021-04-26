@@ -20,3 +20,7 @@ def select_all():
         gymclass = gymClass(row['lesson_name'], row['duration'], row['difficulty_level'], row['capacity'])
         gymclasses.append(gymclass)
     return gymclasses
+
+def delete_all():
+    sql = "DELETE FROM gymclasses"
+    run_sql(sql)
