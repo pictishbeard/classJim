@@ -18,6 +18,6 @@ CREATE TABLE gymclasses (
 
 CREATE TABLE schedules (
     id SERIAL PRIMARY KEY,
-    member_id SERIAL REFERENCES members(id),
-    gymclass_id SERIAL REFERENCES gymclasses(id)
+    member_id SERIAL REFERENCES members(id) ON DELETE CASCADE,
+    gymclass_id SERIAL REFERENCES gymclasses(id) ON DELETE CASCADE
 );
