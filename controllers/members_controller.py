@@ -1,7 +1,7 @@
-from flask import Blueprint, Flask, redirect, render_template, request
-
+from flask import Flask, redirect, render_template, request
+from flask import Blueprint
 from models.member import Member
-import member_repository as member_repository
+import repositories.member_repository as member_repository
 
 members_blueprint = Blueprint("members", __name__)
 
