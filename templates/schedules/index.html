@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Scheduling</h1>
+
+<table>
+    <tr>
+        <th>Current Schedule</th>
+    </tr>
+    {% for schedule in schedules %}
+    <tr>
+        <td><a href="/schedules/{{ schedule.id }}">{{schedule.member, schedule.gymclass}}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
