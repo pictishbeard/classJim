@@ -5,7 +5,7 @@ import repositories.gymclass_repository as gymclass_repository
 
 gymclasses_blueprint = Blueprint("gymclasses", __name__)
 
-@gymclasses_blueprint.route("/gynclasses")
+@gymclasses_blueprint.route("/gymclasses")
 def gymclasses():
     gymclasses = gymclass_repository.select_all()
     return render_template("gymclasses/index.html", gymclasses = gymclasses)
