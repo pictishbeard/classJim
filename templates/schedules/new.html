@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add New Schedule</h1>
+
+<form action="/schedules" method="post">
+  <label for="member">Select a member:</label>
+    <select name="member_id" id="member">
+      {% for member in members %}
+      <option value="{{ member.id }}">{{ member.full_name }}</option>
+      {% endfor %}
+    </select>
+  
+  <label for="gymclass">Select a gym class:</label>
+    <select name="gymclass_id" id="gymclass">
+      {% for gymclass in gymclasses %}
+      <option value="{{ gymclass.id }}">{{ gymclass.lesson_name }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="booking">Add booking</label>
+    <input class="btn btn--action" type='submit' value="Booking">
+</form>
+
+{% endblock %}

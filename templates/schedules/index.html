@@ -2,15 +2,19 @@
 
 {% block content %}
 <h1>Scheduling</h1>
-
-<table>
-    <tr>
-        <th>Current Schedule</th>
-    </tr>
-    {% for schedule in schedules %}
-    <tr>
-        <td><a href="/schedules/{{ schedule.id }}">{{schedule.member, schedule.gymclass}}</a></td>
-    </tr>
-    {% endfor %}
-</table>
+<p class="btn--wrapper">
+  <a class="btn btn--action" href="/schedules/new">New schedule</a>
+</p>
+<ul>
+  {% for schedule in schedules %}
+  <li>
+  <p>{{ schedule.member.full_name }} - {{ schedule.gymclass.lesson_name }} </p>
+    <p>
+      <form action="/schedules/{{ schedule.id }}/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete" />
+      </form>
+    </p>
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}
