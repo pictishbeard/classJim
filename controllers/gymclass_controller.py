@@ -8,7 +8,7 @@ gymclasses_blueprint = Blueprint("gymclasses", __name__)
 @gymclasses_blueprint.route("/gymclasses")
 def gymclasses():
     gymclasses = gymclass_repository.select_all()
-    return render_template("gymclasses/index.html", gymclasses = gymclasses)
+    return render_template("/gymclasses/index.html", gymclasses = gymclasses)
 
 @gymclasses_blueprint.route("/gymclasses/<id>")
 def show(id):

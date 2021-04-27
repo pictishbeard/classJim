@@ -1,6 +1,6 @@
+DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS gymclasses;
-DROP TABLE IF EXISTS schedules;
 
 CREATE TABLE members (
     id SERIAL PRIMARY KEY,
@@ -10,7 +10,7 @@ CREATE TABLE members (
 
 CREATE TABLE gymclasses (
     id SERIAL PRIMARY KEY,
-    gymclass_name VARCHAR(255),
+    lesson_name VARCHAR(255),
     duration INT,
     difficulty_level VARCHAR(255),
     capacity INT
