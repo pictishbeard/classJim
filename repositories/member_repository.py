@@ -27,7 +27,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        member = Member(result['full_name'], result['experience_level'], result['id'])
+        member = Member(result['full_name'], result['experience_level'])
     return member
 
 def gymclasses(member):
