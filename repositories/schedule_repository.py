@@ -25,3 +25,18 @@ def select_all():
         schedules.append(schedule)
     return schedules
 
+def gymclass(schedule):
+    sql = "SELECT * FROM gymclasses WHERE id = %s"
+    values = [schedule.gymclass.id]
+    results = run_sql(sql, values)[0]
+    member = Member(results['full_name'], results['experience_level'])
+    return member
+
+def delete_all():
+    sql = "DELETE FROM schedules"
+    run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM visits WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
