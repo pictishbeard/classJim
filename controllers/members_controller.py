@@ -12,12 +12,11 @@ def members():
     return render_template("members/index.html", members=members)
 
 #update route
-@members_blueprint.route("/members/<id>", methods=["POST"])
-def update_member(id):
-    full_name = request.form["full_name"]
-    member = Member(full_name, experience_level, id)
-    member_repository.update(member)
-    return redirect("/members")
+@members_blueprint.route("/members/<id>")
+def show_members(id):
+    member = member_repository.select(id)
+    gymclass = member_repository.gymclass(member)
+    return render_template("members/show.html", member=member, gymclass=gymclass)
 
 #create route
 
