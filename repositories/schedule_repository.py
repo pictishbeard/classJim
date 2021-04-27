@@ -8,7 +8,7 @@ import repositories.gymclass_repository as gymclass_repository
 
 def save(schedule):
     sql = "INSERT INTO schedules ( member_id, gymclass_id ) VALUES ( %s, %s ) RETURNING id"
-    values = [schedule.member.id, schedule.gymcclass.id]
+    values = [schedule.member.id, schedule.gymclass.id]
     results = run_sql(sql, values)
     schedule.id = results[0]['id']
     return schedule
@@ -24,3 +24,4 @@ def select_all():
         schedule = Schedule(member, gymclass, row['id'])
         schedules.append(schedule)
     return schedules
+

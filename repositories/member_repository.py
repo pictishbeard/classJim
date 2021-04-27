@@ -5,7 +5,7 @@ from models.member import Member
 
 def save(member):
     sql = "INSERT INTO members( full_name, experience_level ) VALUES ( %s, %s ) RETURNING id"
-    values = [member.full_name]
+    values = [member.full_name, member.experience_level]
     results = run_sql(sql, values)
     member.id = results[0]['id']
     return member
@@ -26,16 +26,24 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
 
-def class_bookings(member):
-    class_bookings = []
+    if result is not None:
+        member = Member(result['full_name'], result['experience_level'], result['id'])
+    return member
 
-    sql = "SELECT class_bookings.* FROM class_bookings INNER JOIN gym_classes ON gym_classes.gymclass_id = gymclasses.id WHERE member_id = %s"
+def gymclasses(member):
+    gymclasses = []
+
+    sql = "SELECT gymclasses.* FROM gymclasses INNER JOIN schedules ON schedules.gymclass_id = gymclasses.id WHERE member_id = %s"
     values = [member.id]
     results = run_sql(sql, values)
 
     for row in results:
-        class_booking = gymClass(row['lesson_name'], row['duration'], row['difficulty_level'], row['capacity'])
-        class_bookings.append(class_booking)
+        gymclass = gymClass(row['lesson_name'], row['duration'], row['difficulty_level'], row['capacity'], row['id'])
+        gymclasses.append(class_booking)
 
-    return class_bookings
+    return gymclasses
+
+def delete_all():
+    sql = "DELETE FROM members"
+    run_sql(sql)
 
