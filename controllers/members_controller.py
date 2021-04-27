@@ -15,8 +15,8 @@ def members():
 @members_blueprint.route("/members/<id>")
 def show_members(id):
     member = member_repository.select(id)
-    gymclass = member_repository.gymclass(member)
-    return render_template("members/show.html", member=member, gymclass=gymclass)
+    gymclasses = member_repository.gymclasses(member)
+    return render_template("members/show.html", member=member, gymclasses=gymclasses)
 
 #create route
 
