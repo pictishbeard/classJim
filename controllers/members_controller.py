@@ -31,3 +31,9 @@ def create_member():
     new_member = Member(full_name, experience_level)
     member_repository.save(new_member)
     return redirect("/members")
+
+# Edit member entry
+@members_blueprint.route("/members/<id>/edit")
+def edit_member(id):
+    member = member_repository.select(id)
+    return render_template('members/edit.html', member=member)
