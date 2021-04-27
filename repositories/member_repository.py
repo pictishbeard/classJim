@@ -39,7 +39,7 @@ def gymclasses(member):
 
     for row in results:
         gymclass = gymClass(row['lesson_name'], row['duration'], row['difficulty_level'], row['capacity'], row['id'])
-        gymclasses.append(class_booking)
+        gymclasses.append(gymclass)
 
     return gymclasses
 
