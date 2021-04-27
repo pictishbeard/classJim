@@ -4,9 +4,9 @@ from models.gymclass import gymClass
 from models.member import Member
 from models.schedule import Schedule
 
+import repositories.gymclass_repository as gymclass_repository
 import repositories.member_repository as member_repository
 import repositories.schedule_repository as schedule_repository
-import repositories.gymclass_repository as gymclass_repository
 
 member_repository.delete_all()
 schedule_repository.delete_all()
