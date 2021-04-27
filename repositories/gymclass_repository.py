@@ -1,12 +1,15 @@
 from db.run_sql import run_sql
 
+import pdb
+
 from models.gymclass import gymClass
 from models.member import Member
 
 def save(gymclass):
     sql = "INSERT INTO gymclasses(lesson_name, duration, difficulty_level, capacity) VALUES ( %s, %s, %s, %s ) RETURNING id"
     values = [gymclass.lesson_name, gymclass.duration, gymclass.difficulty_level, gymclass.capacity]
-    results = run_sql(sql, values)
+    results = run_sql( sql, values )
+    pdb.set_trace()
     gymclass.id = results[0]['id']
     return gymclass
 
