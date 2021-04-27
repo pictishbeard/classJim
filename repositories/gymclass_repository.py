@@ -19,7 +19,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        gymclass = gymClass(row['lesson_name'], row['duration'], row['difficulty_level'], row['capacity'])
+        gymclass = gymClass(row['lesson_name'], row['duration'], row['difficulty_level'], row['capacity'], row['id'])
         gymclasses.append(gymclass)
     return gymclasses
 
@@ -30,7 +30,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        gymclass = gymClass(result['lesson_name'], result['duration'], result['difficulty_level'], result['capacity'])
+        gymclass = gymClass(result['lesson_name'], result['duration'], result['difficulty_level'], result['capacity'], result['id'])
     return gymclass
 
 def members(gymclass):

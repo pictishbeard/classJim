@@ -15,7 +15,7 @@ def save(schedule):
 
 def select_all():
     schedules = []
-    sql = "SELECT * FROM gymclasses"
+    sql = "SELECT * FROM schedules"
     results = run_sql(sql)
 
     for row in results:
