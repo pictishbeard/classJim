@@ -19,7 +19,7 @@ def show_members(id):
     return render_template("members/show.html", member=member, gymclasses=gymclasses)
 
 #New member form
-@members_blueprint.route("/members/new")
+@members_blueprint.route("/members/new", methods=['GET'])
 def new_member():
     return render_template("members/new.html")
 
@@ -33,7 +33,7 @@ def create_member():
     return redirect("/members")
 
 # Edit member entry
-@members_blueprint.route("/members/<id>/edit")
+@members_blueprint.route("/members/<id>/edit", methods=['GET'])
 def edit_member(id):
     member = member_repository.select(id)
     return render_template('members/edit.html', member=member)
@@ -43,7 +43,7 @@ def edit_member(id):
 def update_member(id):
     full_name = request.form["full_name"]
     experience_level = request.form["experience_level"]
-    member = Member(full_name, experience_level)
+    member = Member(full_name, experience_level, id)
     member_repository.update(member)
     return redirect("/members")
 
