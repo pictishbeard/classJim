@@ -3,7 +3,7 @@
 {% block content %}
 <h1> {{gymclass.lesson_name}} </h1>
 
-<p>Difficulty: {{ gymclass.difficulty_level }}</p>
+<p>Difficulty Level: {{ gymclass.difficulty_level }}</p>
 
 <h3>Booked by:</h3>
 
@@ -12,5 +12,9 @@
     <li>{{member.full_name}}</li>
     {% endfor %}
 </ul>
+<h4>Gym Class Max Capacity</h4>
+{{gymclass.capacity}}
+<h4>Gym Class Spaces Remaining</h4>
+To be added
 
 {% endblock %}

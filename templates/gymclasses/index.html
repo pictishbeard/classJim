@@ -2,20 +2,25 @@
 
 {% block content %}
 <h1>Gym Classes</h1>
+<h4><a href="/gymclasses/new">Add A New Gym Class</a></h4>
 <table>
+    <h3>Current Gym Classes</h3>
     {% for gymclass in gymclasses %}
     <tr>
         <th>Gym Class Name</th>
         <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.lesson_name }}</a></td>
         <th>|</th>
         <th>Gym Class Duration</th>
-            <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.duration }}</a></td>
+            <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.duration }} mins</a></td>
         <th>|</th>
         <th>Gym Class Difficulty</th>
             <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.difficulty_level }}</a></td>
         <th>|</th>
         <th>Gym Class Max capacity</th>
             <td><a href="/gymclasses/{{ gymclass.id }}"></a>{{ gymclass.capacity }}</td>
+        <th>|</th>
+        <th>Gym Class Scheduled Day</th>
+            <td><a href="/gymclasses/{{ gymclass.day }}"></a>{{ gymclass.day }}</td>
     </tr>
     {% endfor %}
 </table>

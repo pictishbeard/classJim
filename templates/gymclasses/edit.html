@@ -2,12 +2,13 @@
 
 {% block content %}
 
-<h3>Edit Lesson: {{gymclass.lesson_name}}</h3>
+<h3>Edit Lesson: {{gymclass.lesson_name}} - {{gymclass.duration}} - {{gymclass.difficulty_level}} - {{gymclass.capacity}} - {{gymclass.day}}</h3>
 
 <form class=form action="/gymclasses/{{gymclass.id}}" method="POST">
             <label for="lesson_name">Lesson Name</label>
             <input type="text" name="name" value="{{gymclass.lesson_name}}" required>
-            <label for="capacity">Capacity</label>
+            <label for="duration">Duration</label>
+            <input type="number" name="duration" min="0" max="90" value="{{gymclass.duration}}" required>
             <label for="difficulty_level">Difficulty Level</label>  
             <select name="difficulty_level">
                 <option value="Beginner">Beginner</option>
@@ -15,9 +16,17 @@
                 <option value="Advanced">Advanced</option>
                 <option value="Elite">Elite</option>
             </select>
-            <label for="duration">Duration</label>
-            <input type="number" name="duration" min="0" max="90" value="{{gymclass.duration}}" required>
-            <input class="button" type="submit" value="Edit Lesson">
+            <label for="capacity">Capacity</label>
+            <input type="number" name="capacity" min="0" max="35" value="{{gymclass.capacity}}" required>
+            <label for="day">Day</label>
+            <select name="day" value="{{gymclass.day}}" required>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+            </select>
+            <input class="button" type="submit" value="Edit Gym Class">
         </div>
     </div>
 </form>

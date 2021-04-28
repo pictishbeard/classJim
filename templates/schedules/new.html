@@ -14,12 +14,13 @@
   <label for="gymclass">Select a gym class:</label>
     <select name="gymclass_id" id="gymclass">
       {% for gymclass in gymclasses %}
-      <option value="{{ gymclass.id }}">{{ gymclass.lesson_name }}</option>
+      <option value="{{ gymclass.id }}">{{ gymclass.lesson_name }} - {{ gymclass.day }}</option>
       {% endfor %}
     </select>
-
     <label for="booking">Add booking</label>
-    <input class="btn btn--action" type='submit' value="Booking">
+    <input class="btn btn--action" type='submit' value="Add New Class Scheduling">
 </form>
+
+{{result}}
 
 {% endblock %}
