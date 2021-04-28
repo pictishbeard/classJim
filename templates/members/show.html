@@ -7,8 +7,7 @@
 
 <ul>
     {% for gymclass in gymclasses  %}
-    <li>{{gymclass.lesson_name}}</li>
+    <li>{{gymclass.lesson_name}}: Difficulty:{{gymclass.difficulty_level}} Day:{{gymclass.day}} {{gymclass.duration}} mins</li>
     {% endfor %}
 </ul>
-
 {% endblock %}
