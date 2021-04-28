@@ -25,6 +25,12 @@ def select_all():
         schedules.append(schedule)
     return schedules
 
+def select(id):
+    schedule = None
+    sql = "SELECT * FROM schedules WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
 def gymclass(schedule):
     sql = "SELECT * FROM gymclasses WHERE id = %s"
     values = [schedule.gymclass.id]
