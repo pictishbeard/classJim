@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 
+from models.schedule import Schedule
 from models.gymclass import gymClass
 from models.member import Member
 
@@ -8,11 +9,10 @@ def save(member):
     values = [member.full_name, member.experience_level]
     results = run_sql(sql, values)
     member.id = results[0]['id']
-    return member
+    return f"Notification: A new member, {member.full_name}, who is at a {member.experience_level} level, has been saved"
 
 def select_all():
     members = []
-
     sql = "SELECT * FROM members"
     results = run_sql(sql)
     for row in results:
@@ -27,7 +27,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        member = Member(result['full_name'], result['experience_level'])
+        member = Member(result['full_name'], result['experience_level'], result['id'])
     return member
 
 def gymclasses(member):
@@ -56,4 +56,3 @@ def update(member):
     sql = "UPDATE members SET (full_name, experience_level) = (%s, %s) WHERE id = %s"
     values = [member.full_name, member.experience_level, member.id]
     run_sql(sql, values)
-
