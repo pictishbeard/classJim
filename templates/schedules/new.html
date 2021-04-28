@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
 <h1>Add New Schedule</h1>
 
-<form action="/schedules" method="post">
+<form class=form action="/schedules/new" method="POST">
   <label for="member">Select a member:</label>
     <select name="member_id" id="member">
       {% for member in members %}

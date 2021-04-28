@@ -3,22 +3,19 @@
 {% block content %}
 <h1>Gym Classes</h1>
 <table>
-    <tr>
-        <th>Gym Class Name</th>
-        <th></th>
-        <th>Gym Class Duration</th>
-            <td>{{ gymclass.duration }}</td>
-        <th></th>
-        <th>Gym Class Difficulty</th>
-            <td>{{ gymclass.difficulty_level }}</td>
-        <th></th>
-        <th>Gym Class Max capacity</th>
-            <td>{{ gymclass.capacity }}</td>
-    </tr>
     {% for gymclass in gymclasses %}
     <tr>
+        <th>Gym Class Name</th>
         <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.lesson_name }}</a></td>
-    <td></td>
+        <th>|</th>
+        <th>Gym Class Duration</th>
+            <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.duration }}</a></td>
+        <th>|</th>
+        <th>Gym Class Difficulty</th>
+            <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.difficulty_level }}</a></td>
+        <th>|</th>
+        <th>Gym Class Max capacity</th>
+            <td><a href="/gymclasses/{{ gymclass.id }}"></a>{{ gymclass.capacity }}</td>
     </tr>
     {% endfor %}
 </table>

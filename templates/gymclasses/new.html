@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Add New Gym Class</h3>
+
+<form class=form action="/gymclasses/new" method="POST">
+            <label for="name">Gym Class Name</label>
+            <input type="text" name="name" required>
+
+
+            <label for="capacity">Max Capacity</label>
+            <input type="number" name="capacity" min="0" max="30" required>
+
+
+            <label for="difficulty_level">Difficulty Level</label>
+            <select name="difficulty_level">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+                <option value="Elite">Elite</option>
+            </select>
+
+            <label for="day">Day</label>
+            <select name="day">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+
+            <label for="duration">Duration</label> 
+            <input type="number" name="duration" min="0" max="90" required>
+            <input class="button" type="submit" value="Add Gym Class" required>
+        </div>
+    </div>    
+</form>
+
+{{result}}
+
+{% endblock %}

@@ -9,7 +9,7 @@ members_blueprint = Blueprint("members", __name__)
 @members_blueprint.route("/members")
 def members():
     members = member_repository.select_all()
-    return render_template("/members/index.html", members=members)
+    return render_template("members/index.html", members=members)
 
 #show member info route
 @members_blueprint.route("/members/<id>", methods=['GET'])
@@ -20,8 +20,8 @@ def show_members(id):
 
 #New member form
 @members_blueprint.route("/members/new", methods=['GET'])
-def new_member():
-    return render_template("/members/new.html")
+def new_member_form():
+    return render_template("/members/new.html", title="Add New Gym Member")
 
 # Create new member entry
 @members_blueprint.route("/members", methods=['POST'])
@@ -29,8 +29,7 @@ def create_member():
     full_name = request.form["full_name"]
     experience_level = request.form["experience_level"]
     new_member = Member(full_name, experience_level)
-    member_repository.save(new_member)
-    return redirect("/members")
+    return render_template('/members/new.html', title="New Gym Member Added", result=member_repository.save(new_member))
 
 # Edit member entry
 @members_blueprint.route("/members/<id>/edit", methods=['GET'])
