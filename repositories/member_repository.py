@@ -4,11 +4,16 @@ from models.schedule import Schedule
 from models.gymclass import gymClass
 from models.member import Member
 
+import repositories.gymclass_repository as gymclass_repository
+import repositories.schedule_repository as schedule_repository
+
+
 def save(member):
     sql = "INSERT INTO members( full_name, experience_level ) VALUES ( %s, %s ) RETURNING id"
     values = [member.full_name, member.experience_level]
     results = run_sql(sql, values)
-    member.id = results[0]['id']
+    id = results[0]['id']
+    member.id = id
     return f"Notification: A new member, {member.full_name}, who is at a {member.experience_level} level, has been saved"
 
 def select_all():

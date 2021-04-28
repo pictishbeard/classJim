@@ -6,7 +6,7 @@
 
 <form class=form action="/gymclasses/{{gymclass.id}}" method="POST">
             <label for="lesson_name">Lesson Name</label>
-            <input type="text" name="name" value="{{gymclass.lesson_name}}" required>
+            <input type="text" name="lesson_name" value="{{gymclass.lesson_name}}" required>
             <label for="duration">Duration</label>
             <input type="number" name="duration" min="0" max="90" value="{{gymclass.duration}}" required>
             <label for="difficulty_level">Difficulty Level</label>  

@@ -27,6 +27,7 @@ def create_entry():
     member = member_repository.select(member_id)
     gymclass = gymclass_repository.select(gymclass_id)
     new_schedule_entry = Schedule(member, gymclass)
+    schedule_repository.save(new_schedule_entry)
     return render_template('/schedules/new.html', title="New Schedule Entry Added", result=schedule_repository.save(new_schedule_entry))
 
 #DELETE method for removing schedule entries

@@ -24,7 +24,7 @@ def new_member_form():
     return render_template("/members/new.html", title="Add New Gym Member")
 
 # Create new member entry
-@members_blueprint.route("/members", methods=['POST'])
+@members_blueprint.route("/members/new", methods=['POST'])
 def create_member():
     full_name = request.form["full_name"]
     experience_level = request.form["experience_level"]

@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Add New Schedule</h1>
 
-<form class=form action="/schedules/new" method="POST">
+<form action="/schedules/new" method="POST">
   <label for="member">Select a member:</label>
     <select name="member_id" id="member">
       {% for member in members %}
@@ -17,7 +17,7 @@
       <option value="{{ gymclass.id }}">{{ gymclass.lesson_name }} - {{ gymclass.day }}</option>
       {% endfor %}
     </select>
-    <label for="booking">Add booking</label>
+    <label for="gymclass">Add Gym Class Booking</label>
     <input class="btn btn--action" type='submit' value="Add New Class Scheduling">
 </form>
 

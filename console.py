@@ -21,13 +21,13 @@ member_repository.save(member2)
 member3 = Member('Jo Smith', 'Beginner')
 member_repository.save(member3)
 
-gymclass1 = gymClass('Strongman Prep', 60, 'Advanced', 10)
+gymclass1 = gymClass('Strongman Prep', 60, 'Advanced', 10, "Monday")
 gymclass_repository.save(gymclass1)
 
-gymclass2 = gymClass('Zumba Intro', 30, 'Beginner', 20)
+gymclass2 = gymClass('Zumba Intro', 30, 'Beginner', 20, "Friday")
 gymclass_repository.save(gymclass2)
 
-gymclass3 = gymClass('HIIT Intermediate', 15, 'Intermediate', 25)
+gymclass3 = gymClass('HIIT Intermediate', 15, 'Intermediate', 25, "Tuesday")
 gymclass_repository.save(gymclass3)
 
 schedule1 = Schedule(member1, gymclass1)

@@ -1,5 +1,7 @@
 from db.run_sql import run_sql
 
+import pdb
+
 from models.schedule import Schedule
 from models.gymclass import gymClass
 from models.member import Member
@@ -7,10 +9,12 @@ import repositories.member_repository as member_repository
 import repositories.gymclass_repository as gymclass_repository
 
 def save(schedule):
-    sql = "INSERT INTO schedules ( member_id, gymclass_id ) VALUES ( %s, %s ) RETURNING id"
+    sql = "INSERT INTO schedules ( member_id, gymclass_id ) VALUES ( %s, %s ) RETURNING *"
     values = [schedule.member.id, schedule.gymclass.id]
     results = run_sql(sql, values)
-    schedule.id = results[0]['id']
+    pdb.set_trace()
+    id = results[0]['id']
+    schedule.id = id
     return f"Notifcation: {schedule.member.full_name} has booked {schedule.gymclass.lesson_name} for {schedule.gymclass.day}"
 
 def select_all():

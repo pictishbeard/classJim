@@ -26,9 +26,11 @@ def gymclasses_update(id):
     lesson_name = request.form['lesson_name']
     difficulty_level = request.form['difficulty_level']
     duration = request.form['duration']
-    gymclass = gymClass(lesson_name, duration, difficulty_level, capacity, id)
+    capacity = request.form['capacity']
+    day = request.form['day']
+    gymclass = gymClass(lesson_name, difficulty_level, duration, capacity, day, id)
     gymclass_repository.update(gymclass)
-    return redirect('/gymclasses')
+    return redirect('/gymclasses/index.html')
 
 @gymclasses_blueprint.route("/gymclasses/new", methods=['GET'])
 def gymclasses_new_form():
@@ -41,8 +43,8 @@ def gymclasses_add_new():
     day = request.form['day']
     difficulty_level = request.form['difficulty_level']
     capacity = request.form['capacity']
-    gymclass = gymClass(lesson_name, duration, difficulty_level, capacity, id)
-    gymclass_repository.update(gymclass)
+    gymclass = gymClass(lesson_name, duration, difficulty_level, capacity, day)
+    gymclass_repository.save(gymclass)
     return redirect('/gymclasses')
 
 @gymclasses_blueprint.route("/gymclasses/<id>/delete", methods=['POST'])

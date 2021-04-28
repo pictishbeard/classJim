@@ -10,7 +10,6 @@ def save(gymclass):
     values = [gymclass.lesson_name, gymclass.duration, gymclass.difficulty_level, gymclass.capacity, gymclass.day]
     results = run_sql( sql, values )
     gymclass.id = results[0]['id']
-    gymclass.id = id(o)
     return f"Notification: {gymclass.lesson_name} on {gymclass.day} has successfully saved"
 
 def select_all():
@@ -30,10 +29,10 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        gymclass = gymClass(result['lesson_name'], result['duration'], result['difficulty_level'], result['capacity'], result['day'], result['id'])
+        gymclass = gymClass(result['lesson_name'], result['difficulty_level'], result['duration'], result['capacity'], result['day'], result['id'])
     return gymclass
 
-def members_in_class(gymclass):
+def members(gymclass):
     members = []
     sql = "SELECT members.* FROM members INNER JOIN schedules ON schedules.member_id = members.id WHERE gymclass_id = %s"
     values = [gymclass.id]
@@ -54,6 +53,6 @@ def delete_all():
     run_sql(sql)
 
 def update(gymclass):
-    sql = "UPDATE gymclasses SET (lesson_name, duration, difficulty_level, capacity, day) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [gymclass.lesson_name, gymclass.duration, gymclass.difficulty_level, gymclass.capacity, gymclass.day]
+    sql = "UPDATE gymclasses SET (lesson_name, difficulty_level, duration, capacity, day) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [gymclass.lesson_name, gymclass.difficulty_level, gymclass.duration, gymclass.capacity, gymclass.day]
     run_sql(sql, values)
