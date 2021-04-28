@@ -11,7 +11,7 @@ def save(schedule):
     values = [schedule.member.id, schedule.gymclass.id]
     results = run_sql(sql, values)
     schedule.id = results[0]['id']
-    return schedule
+    return f"Notifcation: {schedule.member.full_name} has booked {schedule.gymclass.lesson_name} for {schedule.gymclass.day}"
 
 def select_all():
     schedules = []
@@ -30,6 +30,10 @@ def select(id):
     sql = "SELECT * FROM schedules WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
+
+    if result is not None:
+        schedule = Member(result['full_name'], result['experience_level'], result['id'])
+    return schedule
 
 def gymclass(schedule):
     sql = "SELECT * FROM gymclasses WHERE id = %s"
