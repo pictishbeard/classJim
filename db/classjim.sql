@@ -13,7 +13,8 @@ CREATE TABLE gymclasses (
     lesson_name VARCHAR(255),
     duration INT,
     difficulty_level VARCHAR(255),
-    capacity INT
+    capacity INT,
+    day VARCHAR(255)
 );
 
 CREATE TABLE schedules (

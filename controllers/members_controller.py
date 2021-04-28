@@ -9,22 +9,22 @@ members_blueprint = Blueprint("members", __name__)
 @members_blueprint.route("/members")
 def members():
     members = member_repository.select_all()
-    return render_template("members/index.html", members=members)
+    return render_template("/members/index.html", members=members)
 
 #show member info route
-@members_blueprint.route("/members/<id>")
+@members_blueprint.route("/members/<id>", methods=['GET'])
 def show_members(id):
     member = member_repository.select(id)
     gymclasses = member_repository.gymclasses(member)
-    return render_template("members/show.html", member=member, gymclasses=gymclasses)
+    return render_template("/members/show.html", member=member, gymclasses=gymclasses)
 
 #New member form
 @members_blueprint.route("/members/new", methods=['GET'])
 def new_member():
-    return render_template("members/new.html")
+    return render_template("/members/new.html")
 
 # Create new member entry
-@members_blueprint.route("/members", methods=["POST"])
+@members_blueprint.route("/members", methods=['POST'])
 def create_member():
     full_name = request.form["full_name"]
     experience_level = request.form["experience_level"]
@@ -36,10 +36,10 @@ def create_member():
 @members_blueprint.route("/members/<id>/edit", methods=['GET'])
 def edit_member(id):
     member = member_repository.select(id)
-    return render_template('members/edit.html', member=member)
+    return render_template('/members/edit.html', member = member)
 
 # Update member entry
-@members_blueprint.route("/members/<id>", methods=["POST"])
+@members_blueprint.route("/members/<id>", methods=['POST'])
 def update_member(id):
     full_name = request.form["full_name"]
     experience_level = request.form["experience_level"]
@@ -48,7 +48,7 @@ def update_member(id):
     return redirect("/members")
 
 # Delete member entry
-@members_blueprint.route("/members/<id>/delete", methods=["POST"])
+@members_blueprint.route("/members/<id>/delete", methods=['POST'])
 def delete_member(id):
     member_repository.delete(id)
     return redirect("/members")

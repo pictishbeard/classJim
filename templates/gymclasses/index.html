@@ -7,16 +7,18 @@
         <th>Gym Class Name</th>
         <th></th>
         <th>Gym Class Duration</th>
+            <td>{{ gymclass.duration }}</td>
         <th></th>
         <th>Gym Class Difficulty</th>
+            <td>{{ gymclass.difficulty_level }}</td>
         <th></th>
         <th>Gym Class Max capacity</th>
+            <td>{{ gymclass.capacity }}</td>
     </tr>
     {% for gymclass in gymclasses %}
     <tr>
         <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.lesson_name }}</a></td>
-    <td>|</td>
-    <td>{{ gymclass.duration, gymclass.difficulty_level, gymclass.capacity }} </td>
+    <td></td>
     </tr>
     {% endfor %}
 </table>
