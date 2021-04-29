@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1> {{gymclass.lesson_name}} </h1>
+<h1>Gym Class: {{gymclass.lesson_name}} </h1>
 
-<p>Difficulty Level: {{ gymclass.difficulty_level }}</p>
+<h3>Difficulty Level: {{gymclass.duration}}</h3>
+
+<h3>Duration: {{gymclass.difficulty_level}} mins</h3>
 
 <h3>Booked by:</h3>
-
 <ul>
     {% for member in members  %}
     <li>{{member.full_name}}</li>
     {% endfor %}
 </ul>
-<h4>Gym Class Max Capacity</h4>
-{{gymclass.capacity}}
+<h4>
+    Gym Class Max Capacity: {{gymclass.capacity}}
+</h4>
 <h4>Gym Class Spaces Remaining</h4>
 To be added
 

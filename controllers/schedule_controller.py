@@ -31,7 +31,7 @@ def create_entry():
     return render_template('/schedules/new.html', title="New Schedule Entry Added", result=schedule_repository.save(new_schedule_entry))
 
 #DELETE method for removing schedule entries
-@schedules_blueprint.route("/schedules/<id>/delete")
+@schedules_blueprint.route("/schedules/<id>/delete", methods=['POST'])
 def delete_entry(id):
     schedule_repository.delete(id)
     return redirect('/schedules')

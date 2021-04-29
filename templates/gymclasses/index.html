@@ -5,6 +5,7 @@
 <h4><a href="/gymclasses/new">Add A New Gym Class</a></h4>
 <table>
     <h3>Current Gym Classes</h3>
+    <section id="gym_index_main">
     {% for gymclass in gymclasses %}
     <tr>
         <th>Gym Class Name</th>
@@ -16,7 +17,7 @@
         <th>Gym Class Difficulty</th>
             <td><a href="/gymclasses/{{ gymclass.id }}">{{ gymclass.difficulty_level }}</a></td>
         <th>|</th>
-        <th>Gym Class Max capacity</th>
+        <th>Gym Class Max Capacity</th>
             <td><a href="/gymclasses/{{ gymclass.id }}"></a>{{ gymclass.capacity }}</td>
         <th>|</th>
         <th>Gym Class Scheduled Day</th>
@@ -24,4 +25,5 @@
     </tr>
     {% endfor %}
 </table>
+</section>
 {% endblock %}

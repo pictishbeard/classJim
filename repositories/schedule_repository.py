@@ -1,7 +1,4 @@
 from db.run_sql import run_sql
-
-import pdb
-
 from models.schedule import Schedule
 from models.gymclass import gymClass
 from models.member import Member
@@ -12,7 +9,6 @@ def save(schedule):
     sql = "INSERT INTO schedules ( member_id, gymclass_id ) VALUES ( %s, %s ) RETURNING *"
     values = [schedule.member.id, schedule.gymclass.id]
     results = run_sql(sql, values)
-    pdb.set_trace()
     id = results[0]['id']
     schedule.id = id
     return f"Notifcation: {schedule.member.full_name} has booked {schedule.gymclass.lesson_name} for {schedule.gymclass.day}"
@@ -51,11 +47,11 @@ def delete_all():
     run_sql(sql)
 
 def delete(id):
-    sql = "DELETE FROM visits WHERE id = %s"
+    sql = "DELETE FROM schedules WHERE id = %s"
     values = [id]
     run_sql(sql, values)
 
 def update(schedule):
     sql = "UPDATE schedules SET (member_id, gymclass_id) = (%s, %s) WHERE id = %s" 
-    values = [schedule.member.id, schedule.gymclass.id, gymclass.id]
+    values = [schedule.member.id, schedule.gymclass.id]
     run_sql(sql, values)

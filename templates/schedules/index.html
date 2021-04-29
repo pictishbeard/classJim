@@ -11,9 +11,8 @@
   <li>
   <p>{{ schedule.member.full_name }} - {{ schedule.gymclass.lesson_name }} - {{ schedule.gymclass.difficulty_level }} - {{ schedule.gymclass.day}} - {{ schedule.gymclass.duration }}  </p>
     <p>
-      <form action="/schedules/{{ schedule.id }}/delete" method="POST">
-        <input type="submit" value="delete" />
-      </form>
+        <form class="button" action="/schedules/{{schedule.id}}/delete" method='POST'>
+            <input type="submit" value="delete">
     </p>
   </li>
   {% endfor %}
